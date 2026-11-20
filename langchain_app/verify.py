@@ -23,6 +23,11 @@ def weakened(old_tb: str, new_tb: str) -> bool:
     return new_tb.count("check(") < old_tb.count("check(") or "TEST_RESULT" not in new_tb
 
 
+def looks_like_tb(code: str) -> bool:
+    """A testbench, not a design: dumps a VCD or prints the TEST_RESULT line."""
+    return "$dumpfile" in code or "TEST_RESULT" in code
+
+
 def _event(kind: str, data: dict, config) -> None:
     """Custom callback event (shown by tracing.py on the live console and in trace.jsonl)."""
     try:
@@ -64,6 +69,8 @@ def make_verify_loop(debug_chain, max_retries: int = 3):
 
             if "module" not in code:
                 msg = f"retry {retries} ({stage}): rejected: debugger returned no code"
+            elif culprit == "RTL" and looks_like_tb(code):   # GUARDRAIL: never put a TB in design.v
+                msg = f"retry {retries} ({stage}): rejected: RTL fix was testbench code"
             elif culprit == "TB" and weakened(tb, code):
                 msg = f"retry {retries} ({stage}): rejected: weakened testbench"
             else:
