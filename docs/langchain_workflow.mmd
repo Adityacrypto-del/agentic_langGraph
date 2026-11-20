@@ -1,0 +1,51 @@
+flowchart TB
+  REQ[/"Plain-English cold-chain rule"/]
+  subgraph DESIGN["DESIGN"]
+    SA["spec_analyst<br/><small>prompt | llm | parse + output-fixing retry</small>"]
+    CG{"clarification_gate<br/><small>RunnableBranch</small>"}
+    CL["CLARIFICATION NEEDED<br/><small>RunnableLambda</small>"]
+    DP["design_parallel<br/><small>RunnablePassthrough.assign</small>"]
+    RA["rtl_designer_agent<br/><small>bind_tools ReAct loop + @tool lint_verilog</small>"]
+    TW["testbench_writer<br/><small>prompt | llm | parser, spec only</small>"]
+  end
+  subgraph VERIFY["VERIFY"]
+    VL["verify_debug_loop<br/><small>RunnableLambda(fn, config)</small>"]
+    DB["debugger (critic)<br/><small>prompt | llm.with_retry</small>"]
+    SG{"sim passed?<br/><small>RunnableBranch</small>"}
+  end
+  subgraph IMPLEMENT["IMPLEMENT"]
+    IP["implement_parallel<br/><small>RunnablePassthrough.assign</small>"]
+    SY["synthesize<br/><small>RunnableLambda</small>"]
+    PW["power_estimate<br/><small>RunnableLambda</small>"]
+  end
+  subgraph REPORT["REPORT"]
+    HA["human_approval<br/><small>RunnableLambda</small>"]
+    AG{"approved?<br/><small>RunnableBranch</small>"}
+    RW["report_writer<br/><small>prompt | llm | StrOutputParser</small>"]
+  end
+  EDA[("EDA tool server<br/>iverilog / vvp / yosys / power")]
+  OUT[/"outputs/&lt;module&gt;/"/]
+  REQ --> SA --> CG
+  CG -- ambiguous --> CL --> OUT
+  CG -- complete --> DP
+  DP -- spec --> RA & TW
+  RA -- rtl --> VL
+  TW -- tb --> VL
+  VL -- fail log --> DB -- fix --> VL
+  VL --> SG
+  SG -- yes --> IP --> SY & PW
+  SY & PW --> HA
+  SG -- no --> HA
+  HA --> AG -- yes --> RW --> OUT
+  RA -.-> EDA
+  VL -.-> EDA
+  SY -.-> EDA
+  PW -.-> EDA
+  classDef design fill:#e8f0fe,stroke:#4285f4
+  classDef verify fill:#fdecea,stroke:#db4437
+  classDef impl fill:#e6f4ea,stroke:#0f9d58
+  classDef report fill:#fef7e0,stroke:#f4b400
+  class SA,CG,CL,DP,RA,TW design
+  class VL,DB,SG verify
+  class IP,SY,PW impl
+  class HA,AG,RW report

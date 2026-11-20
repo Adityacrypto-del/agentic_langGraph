@@ -1,0 +1,30 @@
+{
+ "spec": "S1",
+ "model": "mock/scripted",
+ "mock": true,
+ "ok": true,
+ "retries": 1,
+ "seconds": 0.3,
+ "cells": 27,
+ "dffs": 2,
+ "area_ge": 48.0,
+ "power_nw": 0.6846,
+ "within_budget": true,
+ "budget_nw": 100.0,
+ "sim_total": 19,
+ "sim_failed": 0,
+ "llm_calls": 7,
+ "tokens": {
+  "input": 0,
+  "output": 0
+ },
+ "lint_calls": 2,
+ "verify_lints": 2,
+ "history": [
+  "retry 1 (sim): fixed RTL \u2013 The count wraps from 3 to 0 on a 4th out-of-range reading instead of saturating at 3 as rule 4 requires."
+ ],
+ "approved_by": "auto",
+ "clarification": false,
+ "failure_reason": "",
+ "label": "MOCK LLM (scripted) \u2014 EDA results are real"
+}

@@ -1,0 +1,1 @@
+Make a chip for the vaccine fridge that warns people when it gets too warm.

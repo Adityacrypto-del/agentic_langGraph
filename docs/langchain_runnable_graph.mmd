@@ -1,0 +1,34 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	Parallel\3cspec\3eInput([Parallel<spec>Input]):::first
+	Parallel\3cspec\3eOutput(Parallel<spec>Output)
+	Lambda(Lambda)
+	analyse_input(analyse_input)
+	analyse_output(analyse_output)
+	MockChatModel_1(MockChatModel)
+	ChatPromptTemplate(ChatPromptTemplate)
+	MockChatModel_2(MockChatModel)
+	StrOutputParser(StrOutputParser)
+	Passthrough(Passthrough)
+	Branch(Branch)
+	BranchOutput([BranchOutput]):::last
+	analyse_input --> MockChatModel_1;
+	MockChatModel_1 --> analyse_output;
+	ChatPromptTemplate --> MockChatModel_2;
+	MockChatModel_2 --> StrOutputParser;
+	analyse_input --> ChatPromptTemplate;
+	StrOutputParser --> analyse_output;
+	Lambda --> analyse_input;
+	Parallel\3cspec\3eInput --> Lambda;
+	analyse_output --> Parallel\3cspec\3eOutput;
+	Parallel\3cspec\3eInput --> Passthrough;
+	Passthrough --> Parallel\3cspec\3eOutput;
+	Branch --> BranchOutput;
+	Parallel\3cspec\3eOutput --> Branch;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

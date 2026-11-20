@@ -1,0 +1,28 @@
+{
+ "spec": "S5",
+ "model": "mock/scripted",
+ "mock": true,
+ "ok": true,
+ "retries": 0,
+ "seconds": 0.0,
+ "cells": null,
+ "dffs": null,
+ "area_ge": null,
+ "power_nw": null,
+ "within_budget": null,
+ "budget_nw": null,
+ "sim_total": null,
+ "sim_failed": null,
+ "llm_calls": 1,
+ "tokens": {
+  "input": 0,
+  "output": 0
+ },
+ "lint_calls": 0,
+ "verify_lints": 0,
+ "history": [],
+ "approved_by": null,
+ "clarification": true,
+ "failure_reason": "",
+ "label": "MOCK LLM (scripted) \u2014 EDA results are real"
+}

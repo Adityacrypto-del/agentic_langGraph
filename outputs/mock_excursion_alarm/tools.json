@@ -1,0 +1,52 @@
+{
+ "sim": {
+  "passed": true,
+  "stage": "run",
+  "run_id": "1f823f95",
+  "total": 19,
+  "failed": 0,
+  "log": "VCD info: dumpfile wave.vcd opened for output.\nTEST_RESULT: PASS total=19 failed=0\ntb.v:53: $finish called at 336000 (1ps)\n"
+ },
+ "synth": {
+  "ok": true,
+  "top": "excursion_alarm",
+  "cells": 27,
+  "dffs": 2,
+  "breakdown": {
+   "$_ANDNOT_": 12,
+   "$_AND_": 2,
+   "$_DFFE_PN0P_": 2,
+   "$_NAND_": 1,
+   "$_NOR_": 4,
+   "$_ORNOT_": 1,
+   "$_OR_": 2,
+   "$_XNOR_": 1,
+   "$_XOR_": 2
+  },
+  "area_ge": 48.0,
+  "log": ".\n\n=== excursion_alarm ===\n\n   Number of wires:                 30\n   Number of wire bits:             38\n   Number of public wires:           6\n   Number of public wire bits:      14\n   Number of ports:                  5\n   Number of port bits:             12\n   Number of memories:               0\n   Number of memory bits:            0\n   Number of processes:              0\n   Number of cells:                 27\n     $_ANDNOT_                      12\n     $_AND_                          2\n     $_DFFE_PN0P_                    2\n     $_NAND_                         1\n     $_NOR_                          4\n     $_ORNOT_                        1\n     $_OR_                           2\n     $_XNOR_                         1\n     $_XOR_                          2\n\nEnd of script. Logfile hash: 62771d34a1, CPU: user 0.03s system 0.06s, MEM: 45.96 MB peak\nYosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)\nTime spent: 55% 1x abc (0 sec), 8% 21x opt_expr (0 sec), ...\n"
+ },
+ "power": {
+  "ok": true,
+  "toggles": 195,
+  "cycles": 34,
+  "toggles_per_cycle": 5.804,
+  "dynamic_nw": 0.6846,
+  "budget_nw": 100.0,
+  "within_budget": true,
+  "assumptions": "E=0.5*C*V^2 per net toggle, C=5.0 fF, V=1.2 V, f=32768.0 Hz; stimulus is accelerated so this is a conservative relative index, not silicon-accurate; leakage and clock-tree power excluded"
+ },
+ "agent_steps": [
+  {
+   "tool": "lint_verilog",
+   "ok": false
+  },
+  {
+   "tool": "lint_verilog",
+   "ok": true
+  }
+ ],
+ "history": [
+  "retry 1 (sim): fixed RTL \u2013 The count wraps from 3 to 0 on a 4th out-of-range reading instead of saturating at 3 as rule 4 requires."
+ ]
+}

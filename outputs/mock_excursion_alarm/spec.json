@@ -1,0 +1,106 @@
+{
+ "needs_clarification": false,
+ "questions": [],
+ "module_name": "excursion_alarm",
+ "summary": "Raises alarm after 3 consecutive out-of-range temperature readings.",
+ "parameters": [],
+ "ports": [
+  {
+   "name": "clk",
+   "dir": "input",
+   "width": 1,
+   "meaning": "32768 Hz sampling clock"
+  },
+  {
+   "name": "rst_n",
+   "dir": "input",
+   "width": 1,
+   "meaning": "active-low asynchronous reset"
+  },
+  {
+   "name": "sample_valid",
+   "dir": "input",
+   "width": 1,
+   "meaning": "high for one cycle per new reading"
+  },
+  {
+   "name": "temp",
+   "dir": "input",
+   "width": 8,
+   "meaning": "signed two's complement, 0.5 degC/LSB"
+  },
+  {
+   "name": "alarm",
+   "dir": "output",
+   "width": 1,
+   "meaning": "1 when the count equals 3"
+  }
+ ],
+ "reset": {
+  "name": "rst_n",
+  "kind": "async",
+  "active": "low"
+ },
+ "rules": [
+  "1. rst_n=0 immediately sets count=0 (alarm=0).",
+  "2. Readings are evaluated only on a posedge where sample_valid=1.",
+  "3. A reading is out-of-range if temp < 4 or temp > 16 (signed comparison).",
+  "4. Out-of-range reading: count = min(count+1, 3) (saturates at 3).",
+  "5. In-range reading (4 <= temp <= 16): count = 0.",
+  "6. alarm = 1 whenever count == 3, else 0."
+ ],
+ "test_scenarios": [
+  {
+   "name": "reset",
+   "inputs": "rst_n=0",
+   "expected": "alarm=0"
+  },
+  {
+   "name": "three hot",
+   "inputs": "17,20,40 valid",
+   "expected": "alarm 0,0,1"
+  },
+  {
+   "name": "saturation",
+   "inputs": "4th and 5th bad readings",
+   "expected": "alarm stays 1"
+  },
+  {
+   "name": "upper boundary",
+   "inputs": "16 valid",
+   "expected": "in range, alarm=0"
+  },
+  {
+   "name": "lower boundary out",
+   "inputs": "3,3,3 valid",
+   "expected": "alarm 0,0,1"
+  },
+  {
+   "name": "lower boundary in",
+   "inputs": "4 valid",
+   "expected": "count resets"
+  },
+  {
+   "name": "negative",
+   "inputs": "-2,-2,-128 valid",
+   "expected": "alarm=1 after third"
+  },
+  {
+   "name": "invalid ignored",
+   "inputs": "17, (valid=0 x2), 17, 17",
+   "expected": "alarm only after 3rd valid bad"
+  },
+  {
+   "name": "invalid out-of-range ignored",
+   "inputs": "valid=0 temp=100 x3",
+   "expected": "alarm=0"
+  },
+  {
+   "name": "async reset",
+   "inputs": "alarm=1 then rst_n=0 between edges",
+   "expected": "alarm=0 immediately"
+  }
+ ],
+ "clk_hz": 32768,
+ "power_budget_nw": 100
+}

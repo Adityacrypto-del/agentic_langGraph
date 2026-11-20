@@ -1,0 +1,6 @@
+[
+ "What temperature encoding and units does the sensor provide (e.g. signed 8-bit, 0.5 degC per LSB)?",
+ "What exact temperature counts as 'too warm' (the numeric threshold)?",
+ "How many consecutive readings, or how long, above the threshold before warning?",
+ "Should the warning latch until acknowledged/reset, or clear when the temperature recovers?"
+]
