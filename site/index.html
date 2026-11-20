@@ -1,0 +1,104 @@
+<title>FrostByte LangChain</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* Layout: single reading column, figures break out wide; lab-notebook feel with a cold-chain blue accent */
+:root{
+  --bg:#f5f8fa; --surface:#ffffff; --fg:#14212b; --muted:#56687a; --line:#d5dee6;
+  --accent:#0b6fa4; --ok:#1f8a4c; --warn:#b5462f; --code:#eaf1f6;
+  --display:"Space Grotesk",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e161d; --surface:#15212b; --fg:#e3ecf2; --muted:#94a7b8; --line:#26394a;
+  --accent:#5bb8e8; --ok:#57c98a; --warn:#ef8a70; --code:#1b2b38; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e161d; --surface:#15212b; --fg:#e3ecf2; --muted:#94a7b8; --line:#26394a;
+  --accent:#5bb8e8; --ok:#57c98a; --warn:#ef8a70; --code:#1b2b38; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px}
+main{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(28px,5vw,42px)} h2{font-size:24px}
+p{margin:0;max-width:65ch} section{display:flex;flex-direction:column;gap:14px}
+.eyebrow{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+a{color:var(--accent)} a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;padding:9px 16px;border:1px solid var(--accent);border-radius:6px;text-decoration:none;font-weight:600}
+.btn.primary{background:var(--accent);color:var(--bg)}
+figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.tbl{overflow-x:auto} table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+pre{background:var(--code);border-radius:6px;padding:14px;overflow-x:auto;font:13px/1.5 var(--mono);margin:0}
+code{font-family:var(--mono);font-size:.92em}
+.tag{font:600 11px var(--mono);padding:2px 6px;border-radius:4px;border:1px solid currentColor}
+.ok{color:var(--ok)} .warn{color:var(--warn)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;min-width:0}
+.step b{font-family:var(--display);display:block} .step span{font:12px var(--mono);color:var(--muted)}
+</style>
+
+<main>
+<header style="display:flex;flex-direction:column;gap:14px">
+  <span class="eyebrow">SDG 3.8 · LangChain edition</span>
+  <h1>FrostByte: agents that turn vaccine cold-chain rules into verified silicon</h1>
+  <p>Write a vaccine-storage rule in plain English. FrostByte writes the Verilog, tests it with a real simulator, fixes its own mistakes from real compiler and simulator errors, then synthesizes it and estimates its power against a 100 nW budget.</p>
+  <div class="links">
+    <a class="btn primary" href="https://github.com/Adityacrypto-del/agentic_langGraph">Source on GitHub</a>
+    <a class="btn" href="https://github.com/Adityacrypto-del/agentic_langGraph#8-quick-start">Run it yourself</a>
+  </div>
+</header>
+
+<section>
+  <span class="eyebrow">Why it matters</span>
+  <h2>Vaccines spoil invisibly</h2>
+  <p>Vaccines must stay at 2–8 °C. Heat and accidental freezing both damage them, and nothing on the vial shows it. Monitors need tiny, always-on, coin-cell logic, but custom chip design is slow and specialist work. FrostByte supports that work with open-source tools; it does not replace sign-off by engineers or WHO/UNICEF guidance.</p>
+  <figure><img src="device_block_diagram.png" alt="Device block diagram: sensor, 8-bit ADC at 0.5 °C per LSB, FrostByte chip, LED, buzzer, logger, coin cell and 32.768 kHz crystal"><figcaption>Where the generated logic sits. Temperature is signed 8-bit, 0.5 °C per LSB; clock is 32.768 kHz.</figcaption></figure>
+</section>
+
+<section>
+  <span class="eyebrow">How it works</span>
+  <h2>One composed LangChain pipeline</h2>
+  <div class="steps">
+    <div class="step"><b>Spec analyst</b><span>asks questions if the rule is vague</span></div>
+    <div class="step"><b>RTL agent ∥ testbench writer</b><span>agent calls lint itself; tests come from the spec only</span></div>
+    <div class="step"><b>Verify &amp; debug loop</b><span>real errors drive up to 3 fixes</span></div>
+    <div class="step"><b>Synthesis ∥ power</b><span>Yosys cells, flip-flops, gate equivalents, nW</span></div>
+    <div class="step"><b>Human approval → report</b><span>a person signs off on real numbers</span></div>
+  </div>
+  <figure><img src="langchain_workflow.png" alt="FrostByte workflow in four lanes: design, verify, implement, report"><figcaption>Each box names the LangChain primitive behind it. Dashed lines are calls to the EDA tool server (Icarus Verilog 12, Yosys 0.52).</figcaption></figure>
+</section>
+
+<section>
+  <span class="eyebrow">Hardware</span>
+  <h2>S2: the vaccine-fridge alarm FSM</h2>
+  <figure><img src="s2_fsm.png" alt="S2 state machine with NORMAL, SUSPECT, ALARM_EXCURSION and ALARM_FREEZE"><figcaption>Bad reading: below 4 or above 16 LSB (2–8 °C). Freezing: 0 LSB or below. Three bad readings raise the alarm; only ack clears it.</figcaption></figure>
+</section>
+
+<section>
+  <span class="eyebrow">Results so far</span>
+  <h2>What has been measured</h2>
+  <div class="tbl"><table>
+    <tr><th>Run</th><th>Model</th><th>Outcome</th></tr>
+    <tr><td>S1, offline demo</td><td>scripted mock <span class="tag warn">MOCK LLM, EDA results real</span></td><td>2 agent lint calls, 1 self-repair, PASS 19/19 checks · 27 cells, 2 DFFs, 48 GE · 0.68 nW (budget 100 nW)</td></tr>
+    <tr><td>S5 "warn when too warm"</td><td>ollama qwen2.5:3b</td><td class="ok">Asked 3 clarification questions, wrote no RTL</td></tr>
+    <tr><td>S1 plumbing check</td><td>ollama qwen2.5:3b</td><td class="warn">Failed: lint errors after 3 retries. This run exposed a bug (a testbench returned as an RTL fix), now blocked by a guardrail.</td></tr>
+    <tr><td>Full benchmark (10 runs) and ablation</td><td>ollama qwen2.5-coder:7b</td><td>Pending. Run <code>python benchmark/protocol.py</code> and <code>python benchmark/ablation.py</code></td></tr>
+  </table></div>
+  <p style="color:var(--muted);font-size:14px">Only measured numbers appear here. Power is a switching-activity estimate (P = α·C·V²·f, 5 fF per net, 1.2 V, 32 768 Hz), useful to compare designs and not silicon-accurate.</p>
+</section>
+
+<section>
+  <span class="eyebrow">Try it</span>
+  <h2>Run it on a laptop</h2>
+<pre>git clone https://github.com/Adityacrypto-del/agentic_langGraph && cd agentic_langGraph
+docker compose up -d eda                       # Icarus Verilog + Yosys tool server
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements-langchain.txt
+python -m langchain_app.run specs/s1.txt --mock --auto-approve   # offline demo
+cp .env.example .env                           # then pick Ollama, Groq or Gemini
+python -m langchain_app.run specs/s2.txt --auto-approve</pre>
+</section>
+</main>
