@@ -1,0 +1,121 @@
+{
+ "needs_clarification": false,
+ "questions": [],
+ "module_name": "vaccine_fridge_alarm",
+ "summary": "A finite state machine for monitoring vaccine fridge temperature with alarm functionality.",
+ "parameters": [
+  {
+   "name": "N",
+   "default": 3,
+   "meaning": "Number of consecutive bad readings required to enter ALARM_EXCURSION"
+  }
+ ],
+ "ports": [
+  {
+   "name": "clk",
+   "dir": "input",
+   "width": 1,
+   "meaning": "Clock input"
+  },
+  {
+   "name": "rst_n",
+   "kind": "async",
+   "active": "low",
+   "meaning": "Asynchronous reset, active low"
+  },
+  {
+   "name": "sample_valid",
+   "dir": "input",
+   "width": 1,
+   "meaning": "Strobe indicating a valid temperature sample"
+  },
+  {
+   "name": "temp",
+   "dir": "input",
+   "width": 8,
+   "signed": true,
+   "meaning": "Temperature reading in 0.5 degC per LSB"
+  },
+  {
+   "name": "ack",
+   "dir": "input",
+   "width": 1,
+   "meaning": "Operator acknowledge input"
+  }
+ ],
+ "reset": {
+  "name": "rst_n",
+  "kind": "async",
+  "active": "low"
+ },
+ "rules": [
+  "The FSM operates in one clock domain.",
+  "The sampling clock is 32768 Hz.",
+  "The power budget is 100 mW.",
+  "A reading is bad if temp < 4 or temp > 16.",
+  "A reading is freezing if temp <= 0.",
+  "Readings are evaluated only when sample_valid=1.",
+  "From NORMAL: a freezing reading goes to ALARM_FREEZE; else a bad reading goes to SUSPECT with bad_count=1; else stay.",
+  "From SUSPECT: a freezing reading goes to ALARM_FREEZE; a bad reading increments bad_count and, when bad_count reaches 3, goes to ALARM_EXCURSION; an in-range reading goes to NORMAL with bad_count=0.",
+  "In either ALARM state, readings are ignored and alarm=1; when ack=1 in any cycle the state returns to NORMAL with bad_count=0.",
+  "alarm=1 only in states 2 and 3.",
+  "After reset the state is NORMAL and bad_count=0.",
+  "ack has no effect in NORMAL or SUSPECT.",
+  "In the ALARM states bad_count holds its last value until ack.",
+  "If ack=1 and sample_valid=1 in the same cycle while in an ALARM state, ack wins and the reading is ignored."
+ ],
+ "test_scenarios": [
+  {
+   "name": "Reset scenario",
+   "inputs": "clk=0, rst_n=0, sample_valid=0, temp=0, ack=0",
+   "expected": "alarm=0, state=0, bad_count=0"
+  },
+  {
+   "name": "Normal to ALARM_FREEZE transition",
+   "inputs": "clk=1, rst_n=1, sample_valid=1, temp=-2, ack=0",
+   "expected": "alarm=1, state=3, bad_count=0"
+  },
+  {
+   "name": "Normal to SUSPECT transition",
+   "inputs": "clk=1, rst_n=1, sample_valid=1, temp=5, ack=0",
+   "expected": "alarm=0, state=1, bad_count=1"
+  },
+  {
+   "name": "SUSPECT to ALARM_EXCURSION transition",
+   "inputs": "clk=1, rst_n=1, sample_valid=1, temp=20, ack=0",
+   "expected": "alarm=1, state=2, bad_count=3"
+  },
+  {
+   "name": "ALARM_EXCURSION to NORMAL transition with ack",
+   "inputs": "clk=1, rst_n=1, sample_valid=1, temp=15, ack=1",
+   "expected": "alarm=0, state=0, bad_count=0"
+  },
+  {
+   "name": "ALARM_FREEZE to NORMAL transition with ack",
+   "inputs": "clk=1, rst_n=1, sample_valid=1, temp=2, ack=1",
+   "expected": "alarm=0, state=0, bad_count=0"
+  },
+  {
+   "name": "Normal to ALARM_EXCURSION via multiple bad readings",
+   "inputs": "clk=1, rst_n=1, sample_valid=1, temp=5, ack=0; clk=1, rst_n=1, sample_valid=1, temp=20, ack=0",
+   "expected": "alarm=1, state=2, bad_count=3"
+  },
+  {
+   "name": "SUSPECT to NORMAL transition with in-range reading",
+   "inputs": "clk=1, rst_n=1, sample_valid=1, temp=15, ack=0",
+   "expected": "alarm=0, state=0, bad_count=0"
+  },
+  {
+   "name": "ALARM_EXCURSION to NORMAL transition with in-range reading and ack",
+   "inputs": "clk=1, rst_n=1, sample_valid=1, temp=15, ack=1; clk=1, rst_n=1, sample_valid=1, temp=20, ack=0",
+   "expected": "alarm=1, state=2, bad_count=3"
+  },
+  {
+   "name": "ALARM_FREEZE to NORMAL transition with in-range reading and ack",
+   "inputs": "clk=1, rst_n=1, sample_valid=1, temp=2, ack=1; clk=1, rst_n=1, sample_valid=1, temp=5, ack=0",
+   "expected": "alarm=0, state=0, bad_count=0"
+  }
+ ],
+ "clk_hz": 32768,
+ "power_budget_nw": 100
+}

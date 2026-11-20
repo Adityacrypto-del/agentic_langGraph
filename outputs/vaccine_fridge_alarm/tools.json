@@ -1,0 +1,11 @@
+{
+ "sim": {},
+ "synth": {},
+ "power": {},
+ "agent_steps": [],
+ "history": [
+  "retry 1 (lint): rejected: RTL fix was testbench code",
+  "retry 2 (lint): rejected: RTL fix was testbench code",
+  "retry 3 (lint): rejected: RTL fix was testbench code"
+ ]
+}

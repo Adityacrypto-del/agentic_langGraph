@@ -1,0 +1,31 @@
+{
+ "spec": "S2",
+ "model": "ollama/qwen2.5-coder:7b",
+ "mock": false,
+ "ok": false,
+ "retries": 3,
+ "seconds": 722.1,
+ "cells": null,
+ "dffs": null,
+ "area_ge": null,
+ "power_nw": null,
+ "within_budget": null,
+ "budget_nw": null,
+ "sim_total": null,
+ "sim_failed": null,
+ "llm_calls": 7,
+ "tokens": {
+  "input": 16646,
+  "output": 8896
+ },
+ "lint_calls": 0,
+ "verify_lints": 4,
+ "history": [
+  "retry 1 (lint): rejected: RTL fix was testbench code",
+  "retry 2 (lint): rejected: RTL fix was testbench code",
+  "retry 3 (lint): rejected: RTL fix was testbench code"
+ ],
+ "approved_by": "auto",
+ "clarification": false,
+ "failure_reason": "sim failed after 3 retries; last: retry 3 (lint): rejected: RTL fix was testbench code"
+}

@@ -1,0 +1,154 @@
+{"t": 1795165208.031, "event": "chain_start", "name": "frostbyte", "run_id": "01a1f82f-3ddf-76bd-8368-1b7f075f2674", "parent": null}
+{"t": 1795165208.031, "event": "chain_start", "name": "RunnableAssign<spec>", "run_id": "01a1f82f-3ddf-76bd-8368-1b808ee142ec", "parent": "01a1f82f-3ddf-76bd-8368-1b7f075f2674"}
+{"t": 1795165208.031, "event": "chain_start", "name": "RunnableParallel<spec>", "run_id": "01a1f82f-3ddf-76bd-8368-1b81b229a8ea", "parent": "01a1f82f-3ddf-76bd-8368-1b808ee142ec"}
+{"t": 1795165208.032, "event": "chain_start", "name": "RunnableSequence", "run_id": "01a1f82f-3ddf-76bd-8368-1b82c7df95ed", "parent": "01a1f82f-3ddf-76bd-8368-1b81b229a8ea"}
+{"t": 1795165208.032, "event": "chain_start", "name": "RunnableLambda", "run_id": "01a1f82f-3ddf-76bd-8368-1b83e52f6a11", "parent": "01a1f82f-3ddf-76bd-8368-1b82c7df95ed"}
+{"t": 1795165208.032, "event": "chain_end", "name": "RunnableLambda", "run_id": "01a1f82f-3ddf-76bd-8368-1b83e52f6a11", "seconds": 0.0}
+{"t": 1795165208.032, "event": "chain_start", "name": "spec_analyst", "run_id": "01a1f82f-3ddf-76bd-8368-1b84886ae19e", "parent": "01a1f82f-3ddf-76bd-8368-1b82c7df95ed"}
+{"t": 1795165208.032, "event": "chain_start", "name": "RunnableSequence", "run_id": "01a1f82f-3ddf-76bd-8368-1b85bbcdace3", "parent": "01a1f82f-3ddf-76bd-8368-1b84886ae19e"}
+{"t": 1795165208.032, "event": "chain_start", "name": "ChatPromptTemplate", "run_id": "01a1f82f-3de0-7565-90f3-6d31bb7cd1e8", "parent": "01a1f82f-3ddf-76bd-8368-1b85bbcdace3"}
+{"t": 1795165208.032, "event": "chain_end", "name": "ChatPromptTemplate", "run_id": "01a1f82f-3de0-7565-90f3-6d31bb7cd1e8", "seconds": 0.0}
+{"t": 1795165208.032, "event": "chain_start", "name": "ChatOllama", "run_id": "01a1f82f-3de0-7565-90f3-6d32cd111c3f", "parent": "01a1f82f-3ddf-76bd-8368-1b85bbcdace3"}
+{"t": 1795165208.032, "event": "llm_start", "run_id": "01a1f82f-3de0-7565-90f3-6d3355a0a8e1", "parent": "01a1f82f-3de0-7565-90f3-6d32cd111c3f", "n_messages": 2}
+{"t": 1795165262.637, "event": "llm_end", "run_id": "01a1f82f-3de0-7565-90f3-6d3355a0a8e1", "seconds": 54.604, "input_tokens": 718, "output_tokens": 1244, "tool_calls": []}
+{"t": 1795165262.639, "event": "chain_end", "name": "ChatOllama", "run_id": "01a1f82f-3de0-7565-90f3-6d32cd111c3f", "seconds": 54.607}
+{"t": 1795165262.644, "event": "chain_start", "name": "StrOutputParser", "run_id": "01a1f830-1333-75b9-820c-f4e867238b46", "parent": "01a1f82f-3ddf-76bd-8368-1b85bbcdace3"}
+{"t": 1795165262.647, "event": "chain_end", "name": "StrOutputParser", "run_id": "01a1f830-1333-75b9-820c-f4e867238b46", "seconds": 0.003}
+{"t": 1795165262.647, "event": "chain_end", "name": "RunnableSequence", "run_id": "01a1f82f-3ddf-76bd-8368-1b85bbcdace3", "seconds": 54.615}
+{"t": 1795165262.648, "event": "chain_end", "name": "spec_analyst", "run_id": "01a1f82f-3ddf-76bd-8368-1b84886ae19e", "seconds": 54.616}
+{"t": 1795165262.648, "event": "chain_end", "name": "RunnableSequence", "run_id": "01a1f82f-3ddf-76bd-8368-1b82c7df95ed", "seconds": 54.617}
+{"t": 1795165262.65, "event": "chain_end", "name": "RunnableParallel<spec>", "run_id": "01a1f82f-3ddf-76bd-8368-1b81b229a8ea", "seconds": 54.618}
+{"t": 1795165262.65, "event": "chain_end", "name": "RunnableAssign<spec>", "run_id": "01a1f82f-3ddf-76bd-8368-1b808ee142ec", "seconds": 54.619}
+{"t": 1795165262.65, "event": "chain_start", "name": "clarification_gate", "run_id": "01a1f830-133a-70bf-8507-f5b229a07761", "parent": "01a1f82f-3ddf-76bd-8368-1b7f075f2674"}
+{"t": 1795165262.65, "event": "chain_start", "name": "needs_clarification", "run_id": "01a1f830-133a-70bf-8507-f5b388dde976", "parent": "01a1f830-133a-70bf-8507-f5b229a07761"}
+{"t": 1795165262.651, "event": "chain_end", "name": "needs_clarification", "run_id": "01a1f830-133a-70bf-8507-f5b388dde976", "seconds": 0.0}
+{"t": 1795165262.651, "event": "chain_start", "name": "RunnableSequence", "run_id": "01a1f830-133a-70bf-8507-f5b49cb8ca4e", "parent": "01a1f830-133a-70bf-8507-f5b229a07761"}
+{"t": 1795165262.651, "event": "chain_start", "name": "design_parallel", "run_id": "01a1f830-133a-70bf-8507-f5b5bd98ba1e", "parent": "01a1f830-133a-70bf-8507-f5b49cb8ca4e"}
+{"t": 1795165262.651, "event": "chain_start", "name": "RunnableParallel<rtl,tb>", "run_id": "01a1f830-133b-7550-aeb8-cbe3a6f131ba", "parent": "01a1f830-133a-70bf-8507-f5b5bd98ba1e"}
+{"t": 1795165262.652, "event": "chain_start", "name": "RunnableSequence", "run_id": "01a1f830-133b-7550-aeb8-cbe401cb960b", "parent": "01a1f830-133b-7550-aeb8-cbe3a6f131ba"}
+{"t": 1795165262.652, "event": "chain_start", "name": "RunnableLambda", "run_id": "01a1f830-133c-7208-80a7-b1cdf05838d9", "parent": "01a1f830-133b-7550-aeb8-cbe401cb960b"}
+{"t": 1795165262.656, "event": "chain_end", "name": "RunnableLambda", "run_id": "01a1f830-133c-7208-80a7-b1cdf05838d9", "seconds": 0.004}
+{"t": 1795165262.657, "event": "chain_start", "name": "rtl_designer_agent", "run_id": "01a1f830-1340-761b-8af5-7a76942fcba2", "parent": "01a1f830-133b-7550-aeb8-cbe401cb960b"}
+{"t": 1795165262.657, "event": "chain_start", "name": "RunnableSequence", "run_id": "01a1f830-1340-761b-8af5-7a77b3798354", "parent": "01a1f830-133b-7550-aeb8-cbe3a6f131ba"}
+{"t": 1795165262.657, "event": "chain_start", "name": "RunnableLambda", "run_id": "01a1f830-1340-761b-8af5-7a7804c39d5f", "parent": "01a1f830-1340-761b-8af5-7a77b3798354"}
+{"t": 1795165262.657, "event": "chain_end", "name": "RunnableLambda", "run_id": "01a1f830-1340-761b-8af5-7a7804c39d5f", "seconds": 0.0}
+{"t": 1795165262.657, "event": "chain_start", "name": "testbench_writer", "run_id": "01a1f830-1340-761b-8af5-7a791944a220", "parent": "01a1f830-1340-761b-8af5-7a77b3798354"}
+{"t": 1795165262.658, "event": "chain_start", "name": "ChatOllama", "run_id": "01a1f830-1342-7582-b445-0b0739c2c487", "parent": "01a1f830-1340-761b-8af5-7a76942fcba2"}
+{"t": 1795165262.66, "event": "llm_start", "run_id": "01a1f830-1343-7262-86ff-372256657dab", "parent": "01a1f830-1342-7582-b445-0b0739c2c487", "n_messages": 2}
+{"t": 1795165262.665, "event": "chain_start", "name": "assert_spec_only", "run_id": "01a1f830-1348-751f-8e62-379102a95a61", "parent": "01a1f830-1340-761b-8af5-7a791944a220"}
+{"t": 1795165262.665, "event": "chain_end", "name": "assert_spec_only", "run_id": "01a1f830-1348-751f-8e62-379102a95a61", "seconds": 0.0}
+{"t": 1795165262.665, "event": "chain_start", "name": "RunnableLambda", "run_id": "01a1f830-1348-751f-8e62-3792727c3790", "parent": "01a1f830-1340-761b-8af5-7a791944a220"}
+{"t": 1795165262.665, "event": "chain_end", "name": "RunnableLambda", "run_id": "01a1f830-1348-751f-8e62-3792727c3790", "seconds": 0.0}
+{"t": 1795165262.666, "event": "chain_start", "name": "ChatPromptTemplate", "run_id": "01a1f830-1349-703b-bb5d-4cb27129877f", "parent": "01a1f830-1340-761b-8af5-7a791944a220"}
+{"t": 1795165262.666, "event": "chain_end", "name": "ChatPromptTemplate", "run_id": "01a1f830-1349-703b-bb5d-4cb27129877f", "seconds": 0.0}
+{"t": 1795165262.666, "event": "chain_start", "name": "ChatOllama", "run_id": "01a1f830-134a-75d1-90e9-a9804f9ebe20", "parent": "01a1f830-1340-761b-8af5-7a791944a220"}
+{"t": 1795165262.666, "event": "llm_start", "run_id": "01a1f830-134a-75d1-90e9-a98136a59424", "parent": "01a1f830-134a-75d1-90e9-a9804f9ebe20", "n_messages": 2}
+{"t": 1795165289.794, "event": "llm_end", "run_id": "01a1f830-1343-7262-86ff-372256657dab", "seconds": 27.134, "input_tokens": 1706, "output_tokens": 519, "tool_calls": []}
+{"t": 1795165289.796, "event": "chain_end", "name": "ChatOllama", "run_id": "01a1f830-1342-7582-b445-0b0739c2c487", "seconds": 27.137}
+{"t": 1795165289.798, "event": "chain_end", "name": "rtl_designer_agent", "run_id": "01a1f830-1340-761b-8af5-7a76942fcba2", "seconds": 27.142}
+{"t": 1795165289.798, "event": "chain_end", "name": "RunnableSequence", "run_id": "01a1f830-133b-7550-aeb8-cbe401cb960b", "seconds": 27.146}
+{"t": 1795165421.728, "event": "llm_end", "run_id": "01a1f830-134a-75d1-90e9-a98136a59424", "seconds": 159.062, "input_tokens": 1839, "output_tokens": 1560, "tool_calls": []}
+{"t": 1795165421.73, "event": "chain_end", "name": "ChatOllama", "run_id": "01a1f830-134a-75d1-90e9-a9804f9ebe20", "seconds": 159.064}
+{"t": 1795165421.739, "event": "chain_start", "name": "StrOutputParser", "run_id": "01a1f832-80aa-746d-8acf-a095b55af67b", "parent": "01a1f830-1340-761b-8af5-7a791944a220"}
+{"t": 1795165421.742, "event": "chain_end", "name": "StrOutputParser", "run_id": "01a1f832-80aa-746d-8acf-a095b55af67b", "seconds": 0.002}
+{"t": 1795165421.742, "event": "chain_start", "name": "extract_code", "run_id": "01a1f832-80ad-7606-89c9-e82c4e477159", "parent": "01a1f830-1340-761b-8af5-7a791944a220"}
+{"t": 1795165421.743, "event": "chain_end", "name": "extract_code", "run_id": "01a1f832-80ad-7606-89c9-e82c4e477159", "seconds": 0.001}
+{"t": 1795165421.743, "event": "chain_end", "name": "testbench_writer", "run_id": "01a1f830-1340-761b-8af5-7a791944a220", "seconds": 159.086}
+{"t": 1795165421.743, "event": "chain_end", "name": "RunnableSequence", "run_id": "01a1f830-1340-761b-8af5-7a77b3798354", "seconds": 159.086}
+{"t": 1795165421.743, "event": "chain_end", "name": "RunnableParallel<rtl,tb>", "run_id": "01a1f830-133b-7550-aeb8-cbe3a6f131ba", "seconds": 159.092}
+{"t": 1795165421.743, "event": "chain_end", "name": "design_parallel", "run_id": "01a1f830-133a-70bf-8507-f5b5bd98ba1e", "seconds": 159.093}
+{"t": 1795165421.744, "event": "chain_start", "name": "verify_debug_loop", "run_id": "01a1f832-80af-7156-b979-511fd5be99d8", "parent": "01a1f830-133a-70bf-8507-f5b49cb8ca4e"}
+{"t": 1795165421.744, "event": "chain_start", "name": "lint", "run_id": "01a1f832-80af-7156-b979-5120a7fd4789", "parent": "01a1f832-80af-7156-b979-511fd5be99d8"}
+{"t": 1795165422.066, "event": "chain_end", "name": "lint", "run_id": "01a1f832-80af-7156-b979-5120a7fd4789", "seconds": 0.322}
+{"t": 1795165422.067, "event": "custom", "name": "lint_result", "ok": false}
+{"t": 1795165422.067, "event": "chain_start", "name": "debugger", "run_id": "01a1f832-81f2-713c-916d-b866eebec010", "parent": "01a1f832-80af-7156-b979-511fd5be99d8"}
+{"t": 1795165422.067, "event": "chain_start", "name": "RunnableLambda", "run_id": "01a1f832-81f2-713c-916d-b8679308b545", "parent": "01a1f832-81f2-713c-916d-b866eebec010"}
+{"t": 1795165422.067, "event": "chain_end", "name": "RunnableLambda", "run_id": "01a1f832-81f2-713c-916d-b8679308b545", "seconds": 0.0}
+{"t": 1795165422.069, "event": "chain_start", "name": "ChatPromptTemplate", "run_id": "01a1f832-81f4-75be-88e4-eefa12149aba", "parent": "01a1f832-81f2-713c-916d-b866eebec010"}
+{"t": 1795165422.069, "event": "chain_end", "name": "ChatPromptTemplate", "run_id": "01a1f832-81f4-75be-88e4-eefa12149aba", "seconds": 0.001}
+{"t": 1795165422.07, "event": "chain_start", "name": "ChatOllama", "run_id": "01a1f832-81f5-7326-969b-7e159784c5fc", "parent": "01a1f832-81f2-713c-916d-b866eebec010"}
+{"t": 1795165422.072, "event": "llm_start", "run_id": "01a1f832-81f8-7425-a389-ae6feb5be654", "parent": "01a1f832-81f5-7326-969b-7e159784c5fc", "n_messages": 2}
+{"t": 1795165572.18, "event": "llm_end", "run_id": "01a1f832-81f8-7425-a389-ae6feb5be654", "seconds": 150.107, "input_tokens": 3598, "output_tokens": 1632, "tool_calls": []}
+{"t": 1795165572.186, "event": "chain_end", "name": "ChatOllama", "run_id": "01a1f832-81f5-7326-969b-7e159784c5fc", "seconds": 150.116}
+{"t": 1795165572.191, "event": "chain_start", "name": "StrOutputParser", "run_id": "01a1f834-cc5f-7329-bf8d-2906236b581f", "parent": "01a1f832-81f2-713c-916d-b866eebec010"}
+{"t": 1795165572.192, "event": "chain_end", "name": "StrOutputParser", "run_id": "01a1f834-cc5f-7329-bf8d-2906236b581f", "seconds": 0.001}
+{"t": 1795165572.192, "event": "chain_start", "name": "parse_debug", "run_id": "01a1f834-cc60-7188-8a71-3b48f77e0fcf", "parent": "01a1f832-81f2-713c-916d-b866eebec010"}
+{"t": 1795165572.199, "event": "chain_end", "name": "parse_debug", "run_id": "01a1f834-cc60-7188-8a71-3b48f77e0fcf", "seconds": 0.007}
+{"t": 1795165572.199, "event": "chain_end", "name": "debugger", "run_id": "01a1f832-81f2-713c-916d-b866eebec010", "seconds": 150.132}
+{"t": 1795165572.2, "event": "custom", "name": "retry", "n": 1, "stage": "lint", "culprit": "RTL", "msg": "retry 1 (lint): rejected: RTL fix was testbench code"}
+{"t": 1795165572.2, "event": "chain_start", "name": "lint", "run_id": "01a1f834-cc68-767c-9824-a85abb2027ea", "parent": "01a1f832-80af-7156-b979-511fd5be99d8"}
+{"t": 1795165572.376, "event": "chain_end", "name": "lint", "run_id": "01a1f834-cc68-767c-9824-a85abb2027ea", "seconds": 0.175}
+{"t": 1795165572.376, "event": "custom", "name": "lint_result", "ok": false}
+{"t": 1795165572.376, "event": "chain_start", "name": "debugger", "run_id": "01a1f834-cd17-769c-869a-518fcfadacc1", "parent": "01a1f832-80af-7156-b979-511fd5be99d8"}
+{"t": 1795165572.376, "event": "chain_start", "name": "RunnableLambda", "run_id": "01a1f834-cd17-769c-869a-51900c218adf", "parent": "01a1f834-cd17-769c-869a-518fcfadacc1"}
+{"t": 1795165572.376, "event": "chain_end", "name": "RunnableLambda", "run_id": "01a1f834-cd17-769c-869a-51900c218adf", "seconds": 0.0}
+{"t": 1795165572.376, "event": "chain_start", "name": "ChatPromptTemplate", "run_id": "01a1f834-cd18-746e-98d5-0817037d50c3", "parent": "01a1f834-cd17-769c-869a-518fcfadacc1"}
+{"t": 1795165572.379, "event": "chain_end", "name": "ChatPromptTemplate", "run_id": "01a1f834-cd18-746e-98d5-0817037d50c3", "seconds": 0.002}
+{"t": 1795165572.379, "event": "chain_start", "name": "ChatOllama", "run_id": "01a1f834-cd1a-767d-9542-9f711a806ce9", "parent": "01a1f834-cd17-769c-869a-518fcfadacc1"}
+{"t": 1795165572.379, "event": "llm_start", "run_id": "01a1f834-cd1b-7692-8b1e-e72f5df029d2", "parent": "01a1f834-cd1a-767d-9542-9f711a806ce9", "n_messages": 2}
+{"t": 1795165722.849, "event": "llm_end", "run_id": "01a1f834-cd1b-7692-8b1e-e72f5df029d2", "seconds": 150.47, "input_tokens": 3609, "output_tokens": 1663, "tool_calls": []}
+{"t": 1795165722.852, "event": "chain_end", "name": "ChatOllama", "run_id": "01a1f834-cd1a-767d-9542-9f711a806ce9", "seconds": 150.473}
+{"t": 1795165722.858, "event": "chain_start", "name": "StrOutputParser", "run_id": "01a1f837-18e9-7476-b019-c176c8aab581", "parent": "01a1f834-cd17-769c-869a-518fcfadacc1"}
+{"t": 1795165722.861, "event": "chain_end", "name": "StrOutputParser", "run_id": "01a1f837-18e9-7476-b019-c176c8aab581", "seconds": 0.002}
+{"t": 1795165722.861, "event": "chain_start", "name": "parse_debug", "run_id": "01a1f837-18ec-775d-8d22-6ed805da6a75", "parent": "01a1f834-cd17-769c-869a-518fcfadacc1"}
+{"t": 1795165722.864, "event": "chain_end", "name": "parse_debug", "run_id": "01a1f837-18ec-775d-8d22-6ed805da6a75", "seconds": 0.002}
+{"t": 1795165722.864, "event": "chain_end", "name": "debugger", "run_id": "01a1f834-cd17-769c-869a-518fcfadacc1", "seconds": 150.488}
+{"t": 1795165722.864, "event": "custom", "name": "retry", "n": 2, "stage": "lint", "culprit": "RTL", "msg": "retry 2 (lint): rejected: RTL fix was testbench code"}
+{"t": 1795165722.864, "event": "chain_start", "name": "lint", "run_id": "01a1f837-18ef-754c-8881-98bf247f8533", "parent": "01a1f832-80af-7156-b979-511fd5be99d8"}
+{"t": 1795165723.02, "event": "chain_end", "name": "lint", "run_id": "01a1f837-18ef-754c-8881-98bf247f8533", "seconds": 0.156}
+{"t": 1795165723.02, "event": "custom", "name": "lint_result", "ok": false}
+{"t": 1795165723.02, "event": "chain_start", "name": "debugger", "run_id": "01a1f837-198c-709e-927c-3ef313f8dfda", "parent": "01a1f832-80af-7156-b979-511fd5be99d8"}
+{"t": 1795165723.02, "event": "chain_start", "name": "RunnableLambda", "run_id": "01a1f837-198c-709e-927c-3ef438f71f77", "parent": "01a1f837-198c-709e-927c-3ef313f8dfda"}
+{"t": 1795165723.021, "event": "chain_end", "name": "RunnableLambda", "run_id": "01a1f837-198c-709e-927c-3ef438f71f77", "seconds": 0.001}
+{"t": 1795165723.022, "event": "chain_start", "name": "ChatPromptTemplate", "run_id": "01a1f837-198d-767c-b550-9c2e82731293", "parent": "01a1f837-198c-709e-927c-3ef313f8dfda"}
+{"t": 1795165723.024, "event": "chain_end", "name": "ChatPromptTemplate", "run_id": "01a1f837-198d-767c-b550-9c2e82731293", "seconds": 0.002}
+{"t": 1795165723.024, "event": "chain_start", "name": "ChatOllama", "run_id": "01a1f837-1990-766f-ab05-b3619f5e3d93", "parent": "01a1f837-198c-709e-927c-3ef313f8dfda"}
+{"t": 1795165723.026, "event": "llm_start", "run_id": "01a1f837-1991-7316-bf05-db8cca522cb4", "parent": "01a1f837-1990-766f-ab05-b3619f5e3d93", "n_messages": 2}
+{"t": 1795165877.892, "event": "llm_end", "run_id": "01a1f837-1991-7316-bf05-db8cca522cb4", "seconds": 154.866, "input_tokens": 3625, "output_tokens": 1664, "tool_calls": []}
+{"t": 1795165877.895, "event": "chain_end", "name": "ChatOllama", "run_id": "01a1f837-1990-766f-ab05-b3619f5e3d93", "seconds": 154.871}
+{"t": 1795165877.897, "event": "chain_start", "name": "StrOutputParser", "run_id": "01a1f839-7689-70e2-aacf-357528d7a841", "parent": "01a1f837-198c-709e-927c-3ef313f8dfda"}
+{"t": 1795165877.898, "event": "chain_end", "name": "StrOutputParser", "run_id": "01a1f839-7689-70e2-aacf-357528d7a841", "seconds": 0.0}
+{"t": 1795165877.898, "event": "chain_start", "name": "parse_debug", "run_id": "01a1f839-7689-70e2-aacf-357645ce009e", "parent": "01a1f837-198c-709e-927c-3ef313f8dfda"}
+{"t": 1795165877.898, "event": "chain_end", "name": "parse_debug", "run_id": "01a1f839-7689-70e2-aacf-357645ce009e", "seconds": 0.0}
+{"t": 1795165877.898, "event": "chain_end", "name": "debugger", "run_id": "01a1f837-198c-709e-927c-3ef313f8dfda", "seconds": 154.878}
+{"t": 1795165877.898, "event": "custom", "name": "retry", "n": 3, "stage": "lint", "culprit": "RTL", "msg": "retry 3 (lint): rejected: RTL fix was testbench code"}
+{"t": 1795165877.899, "event": "chain_start", "name": "lint", "run_id": "01a1f839-768a-75d8-be1c-6d90aaaed117", "parent": "01a1f832-80af-7156-b979-511fd5be99d8"}
+{"t": 1795165878.049, "event": "chain_end", "name": "lint", "run_id": "01a1f839-768a-75d8-be1c-6d90aaaed117", "seconds": 0.151}
+{"t": 1795165878.049, "event": "custom", "name": "lint_result", "ok": false}
+{"t": 1795165878.049, "event": "custom", "name": "retries_exhausted", "retries": 3}
+{"t": 1795165878.05, "event": "chain_end", "name": "verify_debug_loop", "run_id": "01a1f832-80af-7156-b979-511fd5be99d8", "seconds": 456.306}
+{"t": 1795165878.05, "event": "chain_start", "name": "RunnableBranch", "run_id": "01a1f839-7721-76a0-98ad-1978f4df4183", "parent": "01a1f830-133a-70bf-8507-f5b49cb8ca4e"}
+{"t": 1795165878.05, "event": "chain_start", "name": "sim_passed", "run_id": "01a1f839-7722-77ed-bb24-74fb15bc49e1", "parent": "01a1f839-7721-76a0-98ad-1978f4df4183"}
+{"t": 1795165878.051, "event": "chain_end", "name": "sim_passed", "run_id": "01a1f839-7722-77ed-bb24-74fb15bc49e1", "seconds": 0.0}
+{"t": 1795165878.051, "event": "chain_start", "name": "RunnablePassthrough", "run_id": "01a1f839-7723-7528-8f17-357be2b090ee", "parent": "01a1f839-7721-76a0-98ad-1978f4df4183"}
+{"t": 1795165878.051, "event": "chain_end", "name": "RunnablePassthrough", "run_id": "01a1f839-7723-7528-8f17-357be2b090ee", "seconds": 0.0}
+{"t": 1795165878.052, "event": "chain_end", "name": "RunnableBranch", "run_id": "01a1f839-7721-76a0-98ad-1978f4df4183", "seconds": 0.002}
+{"t": 1795165878.052, "event": "chain_start", "name": "human_approval", "run_id": "01a1f839-7723-7528-8f17-357c66d296c1", "parent": "01a1f830-133a-70bf-8507-f5b49cb8ca4e"}
+{"t": 1795165878.052, "event": "chain_end", "name": "human_approval", "run_id": "01a1f839-7723-7528-8f17-357c66d296c1", "seconds": 0.001}
+{"t": 1795165878.053, "event": "chain_start", "name": "RunnableBranch", "run_id": "01a1f839-7724-73de-a95b-f4d30e2023ce", "parent": "01a1f830-133a-70bf-8507-f5b49cb8ca4e"}
+{"t": 1795165878.053, "event": "chain_start", "name": "approved", "run_id": "01a1f839-7724-73de-a95b-f4d435264da3", "parent": "01a1f839-7724-73de-a95b-f4d30e2023ce"}
+{"t": 1795165878.053, "event": "chain_end", "name": "approved", "run_id": "01a1f839-7724-73de-a95b-f4d435264da3", "seconds": 0.0}
+{"t": 1795165878.053, "event": "chain_start", "name": "RunnableAssign<report>", "run_id": "01a1f839-7724-73de-a95b-f4d598e48d6b", "parent": "01a1f839-7724-73de-a95b-f4d30e2023ce"}
+{"t": 1795165878.054, "event": "chain_start", "name": "RunnableParallel<report>", "run_id": "01a1f839-7725-75b3-ad83-89a833a2ec75", "parent": "01a1f839-7724-73de-a95b-f4d598e48d6b"}
+{"t": 1795165878.055, "event": "chain_start", "name": "RunnableSequence", "run_id": "01a1f839-7727-7319-b5d8-5756d2a97518", "parent": "01a1f839-7725-75b3-ad83-89a833a2ec75"}
+{"t": 1795165878.055, "event": "chain_start", "name": "report_bundle", "run_id": "01a1f839-7727-7319-b5d8-5757ce2f2733", "parent": "01a1f839-7727-7319-b5d8-5756d2a97518"}
+{"t": 1795165878.056, "event": "chain_end", "name": "report_bundle", "run_id": "01a1f839-7727-7319-b5d8-5757ce2f2733", "seconds": 0.001}
+{"t": 1795165878.057, "event": "chain_start", "name": "report_writer", "run_id": "01a1f839-7728-72a3-9f47-b37042ca7389", "parent": "01a1f839-7727-7319-b5d8-5756d2a97518"}
+{"t": 1795165878.057, "event": "chain_start", "name": "RunnableLambda", "run_id": "01a1f839-7728-72a3-9f47-b37161e8d0d0", "parent": "01a1f839-7728-72a3-9f47-b37042ca7389"}
+{"t": 1795165878.057, "event": "chain_end", "name": "RunnableLambda", "run_id": "01a1f839-7728-72a3-9f47-b37161e8d0d0", "seconds": 0.001}
+{"t": 1795165878.06, "event": "chain_start", "name": "ChatPromptTemplate", "run_id": "01a1f839-772c-75c8-b753-c02c0881c9c7", "parent": "01a1f839-7728-72a3-9f47-b37042ca7389"}
+{"t": 1795165878.061, "event": "chain_end", "name": "ChatPromptTemplate", "run_id": "01a1f839-772c-75c8-b753-c02c0881c9c7", "seconds": 0.001}
+{"t": 1795165878.061, "event": "chain_start", "name": "ChatOllama", "run_id": "01a1f839-772c-75c8-b753-c02dbd070757", "parent": "01a1f839-7728-72a3-9f47-b37042ca7389"}
+{"t": 1795165878.061, "event": "llm_start", "run_id": "01a1f839-772d-7432-8ee6-98fae169afd2", "parent": "01a1f839-772c-75c8-b753-c02dbd070757", "n_messages": 2}
+{"t": 1795165930.099, "event": "llm_end", "run_id": "01a1f839-772d-7432-8ee6-98fae169afd2", "seconds": 52.038, "input_tokens": 1551, "output_tokens": 614, "tool_calls": []}
+{"t": 1795165930.101, "event": "chain_end", "name": "ChatOllama", "run_id": "01a1f839-772c-75c8-b753-c02dbd070757", "seconds": 52.04}
+{"t": 1795165930.105, "event": "chain_start", "name": "StrOutputParser", "run_id": "01a1f83a-4279-71dc-bc42-0ea2a5a975c1", "parent": "01a1f839-7728-72a3-9f47-b37042ca7389"}
+{"t": 1795165930.106, "event": "chain_end", "name": "StrOutputParser", "run_id": "01a1f83a-4279-71dc-bc42-0ea2a5a975c1", "seconds": 0.001}
+{"t": 1795165930.106, "event": "chain_end", "name": "report_writer", "run_id": "01a1f839-7728-72a3-9f47-b37042ca7389", "seconds": 52.049}
+{"t": 1795165930.106, "event": "chain_end", "name": "RunnableSequence", "run_id": "01a1f839-7727-7319-b5d8-5756d2a97518", "seconds": 52.05}
+{"t": 1795165930.107, "event": "chain_end", "name": "RunnableParallel<report>", "run_id": "01a1f839-7725-75b3-ad83-89a833a2ec75", "seconds": 52.053}
+{"t": 1795165930.107, "event": "chain_end", "name": "RunnableAssign<report>", "run_id": "01a1f839-7724-73de-a95b-f4d598e48d6b", "seconds": 52.054}
+{"t": 1795165930.107, "event": "chain_end", "name": "RunnableBranch", "run_id": "01a1f839-7724-73de-a95b-f4d30e2023ce", "seconds": 52.054}
+{"t": 1795165930.107, "event": "chain_end", "name": "RunnableSequence", "run_id": "01a1f830-133a-70bf-8507-f5b49cb8ca4e", "seconds": 667.456}
+{"t": 1795165930.107, "event": "chain_end", "name": "clarification_gate", "run_id": "01a1f830-133a-70bf-8507-f5b229a07761", "seconds": 667.457}
+{"t": 1795165930.107, "event": "chain_end", "name": "frostbyte", "run_id": "01a1f82f-3ddf-76bd-8368-1b7f075f2674", "seconds": 722.076}

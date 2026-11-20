@@ -85,7 +85,8 @@ code{font-family:var(--mono);font-size:.92em}
     <tr><td>S1, offline demo</td><td>scripted mock <span class="tag warn">MOCK LLM, EDA results real</span></td><td>2 agent lint calls, 1 self-repair, PASS 19/19 checks · 27 cells, 2 DFFs, 48 GE · 0.68 nW (budget 100 nW)</td></tr>
     <tr><td>S5 "warn when too warm"</td><td>ollama qwen2.5:3b</td><td class="ok">Asked 3 clarification questions, wrote no RTL</td></tr>
     <tr><td>S1 plumbing check</td><td>ollama qwen2.5:3b</td><td class="warn">Failed: lint errors after 3 retries. This run exposed a bug (a testbench returned as an RTL fix), now blocked by a guardrail.</td></tr>
-    <tr><td>Full benchmark (10 runs) and ablation</td><td>ollama qwen2.5-coder:7b</td><td>Pending. Run <code>python benchmark/protocol.py</code> and <code>python benchmark/ablation.py</code></td></tr>
+    <tr><td>S2 fridge alarm, benchmark run 1</td><td>ollama qwen2.5-coder:7b</td><td class="warn">Failed after 3 retries (722 s, 7 LLM calls). The design never compiled. The guardrail rejected all 3 debugger "fixes" because they were testbench code, so it reported failure instead of shipping a bad design.</td></tr>
+    <tr><td>Remaining benchmark (9 runs) and ablation</td><td>ollama qwen2.5-coder:7b</td><td>Pending. Run <code>python benchmark/protocol.py</code> and <code>python benchmark/ablation.py</code></td></tr>
   </table></div>
   <p style="color:var(--muted);font-size:14px">Only measured numbers appear here. Power is a switching-activity estimate (P = α·C·V²·f, 5 fF per net, 1.2 V, 32 768 Hz), useful to compare designs and not silicon-accurate.</p>
 </section>

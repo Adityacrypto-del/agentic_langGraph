@@ -1,0 +1,2 @@
+platform,spec,run,success,retries,seconds,cells,power_nw,failure_reason
+langchain,S2,1,0,3,722.1,,,sim failed after 3 retries; last: retry 3 (lint): rejected: RTL fix was testbench code
